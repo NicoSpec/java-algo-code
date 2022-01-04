@@ -1,4 +1,7 @@
-package com.tencent.code.tree;
+package com.tencent.code.readed;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * n 位格雷码序列 是一个由 2n 个整数组成的序列，其中：
@@ -42,4 +45,14 @@ package com.tencent.code.tree;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class GrayCode {
+    public List<Integer> grayCode(int n) {
+        List<Integer> res = new ArrayList<Integer>() {{ add(0); }};
+        int head = 1;
+        for (int i = 0; i < n; i++) {
+            for (int j = res.size() - 1; j >= 0; j--)
+                res.add(head + res.get(j));
+            head <<= 1;
+        }
+        return res;
+    }
 }
