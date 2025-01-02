@@ -1,7 +1,6 @@
 package common;
 
 public class ListNode {
-
     public int getVal() {
         return val;
     }
@@ -18,7 +17,7 @@ public class ListNode {
         this.next = next;
     }
 
-    private int val;
+    public int val;
 
-    private ListNode next;
+    public ListNode next;
 }
