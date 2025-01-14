@@ -32,9 +32,6 @@ import java.util.LinkedList;
  * @version 1.0 created by huangfei on 2025/1/9 17:30
  */
 public class 滑动窗口最大值 {
-}
-
-class Solution {
     /**
      *
      * 妙笔生花！！保证队列里面始终有最大值 第二大的值，保证最大值最划走之后 不用遍历去找。
