@@ -30,9 +30,6 @@ import java.util.Queue;
  * @version 1.0 created by huangfei on 2025/1/14 18:55
  */
 public class 二叉树的层序遍历 {
-}
-
-class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         List<List<Integer>> res = new ArrayList<List<Integer>>();
