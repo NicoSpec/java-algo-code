@@ -57,6 +57,7 @@ public class 二叉树的最近公共祖先 {
         TreeNode right = lowestCommonAncestor(root.right, p, q);
         if (left == null) return right;
         if (right == null) return left;
+        // 左右都不是空说明p和q在root的左子树和右子树各一个
         return root;
     }
 }

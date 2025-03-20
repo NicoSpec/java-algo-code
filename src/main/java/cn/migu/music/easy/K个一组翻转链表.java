@@ -2,6 +2,10 @@ package cn.migu.music.easy;
 
 import common.ListNode;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+
 /**
  *
  * 给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。
@@ -28,6 +32,7 @@ import common.ListNode;
  * @version 1.0 created by huangfei on 2025/1/14 14:02
  */
 public class K个一组翻转链表 {
+
     public ListNode reverseKGroup(ListNode head, int k) {
         if(head == null || k == 1){
             return head;

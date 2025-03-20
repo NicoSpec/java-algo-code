@@ -39,12 +39,10 @@ import java.util.PriorityQueue;
 public class 合并K个升序链表 {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
-        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>() {
-            public int compare(ListNode o1, ListNode o2) {
-                if (o1.val < o2.val) return -1;
-                else if (o1.val == o2.val) return 0;
-                else return 1;
-            }
+        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, (o1, o2) -> {
+            if (o1.val < o2.val) return -1;
+            else if (o1.val == o2.val) return 0;
+            else return 1;
         });
         ListNode dummy = new ListNode();
         ListNode p = dummy;

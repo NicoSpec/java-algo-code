@@ -37,6 +37,17 @@ import common.ListNode;
  * @version 1.0 created by huangfei on 2025/1/8 17:09
  */
 public class 环形链表II {
+
+    /**
+     *
+     * 假设链表有a个不在环的节点，b个是环的节点
+     *
+     * 第一次相遇，快指针走了f步，慢指针走了s步，f=2s，这时快指针肯定比慢指针多走了n个环，即s = nb，f = 2nb；
+     * 任何指针想要走到环的入口，步数一定是a + nb；那么只需要慢指针再走a步即可；把快指针放在链表头再合慢指针一起走a步(相遇)
+     *
+     * @param head
+     * @return
+     */
     public ListNode detectCycle(ListNode head) {
         ListNode fast = head, slow = head;
         while (true) {

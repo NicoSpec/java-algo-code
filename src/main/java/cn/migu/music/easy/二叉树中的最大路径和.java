@@ -28,20 +28,26 @@ import common.TreeNode;
  * @version 1.0 created by huangfei on 2025/1/16 16:46
  */
 public class 二叉树中的最大路径和 {
-    private int ans = Integer.MIN_VALUE;
+    private int maxSum = Integer.MIN_VALUE; // 记录全局最大路径和
 
     public int maxPathSum(TreeNode root) {
         dfs(root);
-        return ans;
+        return maxSum;
     }
 
     private int dfs(TreeNode node) {
         if (node == null) {
-            return 0; // 没有节点，和为 0
+            return 0; // 空节点贡献值为0
         }
-        int lVal = dfs(node.left); // 左子树最大链和
-        int rVal = dfs(node.right); // 右子树最大链和
-        ans = Math.max(ans, lVal + rVal + node.val); // 两条链拼成路径
-        return Math.max(Math.max(lVal, rVal) + node.val, 0); // 当前子树最大链和（注意这里和 0 取最大值了）
+
+        // 计算左右子树的最大贡献值（负数置为0）
+        int left = Math.max(0, dfs(node.left));
+        int right = Math.max(0, dfs(node.right));
+
+        // 更新最大路径和：当前节点 + 左子树贡献 + 右子树贡献
+        maxSum = Math.max(maxSum, node.val + left + right);
+
+        // 返回当前节点的最大单向贡献值
+        return node.val + Math.max(left, right);
     }
 }
