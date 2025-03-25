@@ -79,5 +79,113 @@ public class K个一组翻转链表 {
         }
         return pre;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static ListNode reverseKGroup1(ListNode head, int k) {
+
+        ListNode dump = new ListNode();
+        dump.next = head;
+
+        ListNode preGroup = dump;
+        ListNode cur = preGroup;
+
+        while (true) {
+            int i = 0;
+            for (;i < k && cur != null;i++) {
+                cur = cur.next;
+            }
+            if (cur == null) {
+                break;
+            }
+            ListNode nextPreGroup = cur.next;
+            cur.next = null;
+            ListNode node = reverse1(preGroup.next);
+            ListNode end = preGroup.next;
+            preGroup.next = node;
+            end.next = nextPreGroup;
+
+            preGroup = end;
+            cur = preGroup;
+
+        }
+
+
+        return dump.next;
+    }
+
+
+    public static ListNode reverse1(ListNode head) {
+        ListNode cur = head;
+        ListNode pre = null;
+        while (cur != null) {
+            ListNode tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+
+        return pre;
+    }
+
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        ListNode head1 = new ListNode(2);
+        head.next = head1;
+        ListNode head2 = new ListNode(3);
+        head1.next = head2;
+        ListNode hea3 = new ListNode(4);
+        head2.next = hea3;
+        ListNode hea4 = new ListNode(5);
+        hea3.next = hea4;
+        ListNode hea5 = new ListNode(6);
+        hea4.next = hea5;
+        ListNode hea6 = new ListNode(7);
+        hea5.next = hea6;
+        ListNode hea7 = new ListNode(8);
+        hea6.next = hea7;
+        ListNode head8 = new ListNode(9);
+        hea7.next = head8;
+        ListNode head9 = new ListNode(10);
+        head8.next = head9;
+        ListNode head10 = new ListNode(11);
+        head9.next = head10;
+        ListNode head11 = new ListNode(12);
+        head10.next = head11;
+        ListNode head12 = new ListNode(13);
+        head11.next = head12;
+        ListNode head13 = new ListNode(14);
+        head12.next = head13;
+        head13.next = null;
+
+        ListNode node = reverseKGroup1(head, 3);
+
+        ListNode tmp = node;
+
+        while (tmp != null) {
+            System.out.println(tmp.getVal());
+            tmp = tmp.next;
+        }
+    }
 }
 
